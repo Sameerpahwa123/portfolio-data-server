@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic Flex Activity statement (not real data), daily statements, dd/MM/yyyy dates.
+  Day 1  AED 3,674 deposit @0.27226 = $1,000.28324; buy USD with AED: $2 commission, FX cost -2.25 (FIFO CASH row)
+  Day 2  buy 10 XYZ @50 (-$1 comm); open 100/95 put credit spread (order 11): +200 -100, -$1.40 comm
+  Day 3  dividend $5.00, withholding -$0.75; close spread (order 12) realized +48.60 / -41.40; sell XYZ @52 realized +18
+  Day 4  other fee -$1.00, broker interest +$0.10
+  Expected: deposited 1,000.28  value 1,026.58  net +26.30 = realized 25.20 + dividends 4.25 + interest 0.10
+            - fees 1.00 - fx 2.25;  commissions -6.80;  fees paid 7.80
+  Every CashTransaction appears twice (DETAIL + SUMMARY) like real IBKR output. -->
+<FlexQueryResponse queryName="claude_full" type="AF">
+<FlexStatements count="4">
+<FlexStatement accountId="U9000001" fromDate="03/08/2026" toDate="03/08/2026" period="" whenGenerated="07/08/2026;080000">
+<AccountInformation accountId="U9000001" currency="USD" name="Test" accountType="Individual" dateOpened="03/08/2026" dateFunded="03/08/2026" dateClosed="" />
+<EquitySummaryInBase>
+<EquitySummaryByReportDateInBase accountId="U9000001" currency="USD" reportDate="31/07/2026" cash="0" stock="0" options="0" total="0" />
+<EquitySummaryByReportDateInBase accountId="U9000001" currency="USD" reportDate="03/08/2026" cash="998.03324" stock="0" options="0" total="998.03324" />
+</EquitySummaryInBase>
+<ChangeInNAV accountId="U9000001" currency="USD" fromDate="03/08/2026" toDate="03/08/2026" startingValue="0" mtm="-0.25" realized="0" depositsWithdrawals="1000.28324" dividends="0" withholdingTax="0" interest="0" commissions="-2" forexCommissions="0" otherFees="0" fxTranslation="0" other="0" endingValue="998.03324" twr="0" />
+<CashTransactions>
+<CashTransaction accountId="U9000001" currency="AED" fxRateToBase="0.27226" type="Deposits/Withdrawals" description="CASH RECEIPTS / ELECTRONIC FUND TRANSFERS" amount="3,674" dateTime="03/08/2026" settleDate="03/08/2026" reportDate="03/08/2026" transactionID="7001" levelOfDetail="DETAIL" />
+<CashTransaction accountId="U9000001" currency="AED" fxRateToBase="0.27226" type="Deposits/Withdrawals" description="" amount="3674" dateTime="03/08/2026" reportDate="03/08/2026" transactionID="" levelOfDetail="SUMMARY" />
+</CashTransactions>
+<Trades>
+<Trade accountId="U9000001" currency="AED" fxRateToBase="0.27226" assetCategory="CASH" symbol="USD.AED" description="USD.AED" conid="12087792" tradeID="8001" transactionID="T8001" ibExecID="E8001" ibOrderID="9001" dateTime="03/08/2026;101500" tradeDate="03/08/2026" quantity="1000" tradePrice="3.6735" proceeds="-3673.5" ibCommission="-2" ibCommissionCurrency="USD" netCash="0" fifoPnlRealized="0" mtmPnl="-0.25" buySell="BUY" levelOfDetail="EXECUTION" />
+</Trades>
+<FIFOPerformanceSummaryInBase>
+<FIFOPerformanceSummaryUnderlying accountId="U9000001" assetCategory="CASH" symbol="USD.AED" conid="12087792" description="USD.AED" totalRealizedPnl="-2.25" totalUnrealizedPnl="0" totalFifoPnl="-2.25" reportDate="03/08/2026" />
+<FIFOPerformanceSummaryUnderlying accountId="U9000001" assetCategory="" symbol="" conid="" description="Total (All Assets)" totalRealizedPnl="-2.25" totalUnrealizedPnl="0" totalFifoPnl="-2.25" reportDate="03/08/2026" />
+</FIFOPerformanceSummaryInBase>
+</FlexStatement>
+<FlexStatement accountId="U9000001" fromDate="04/08/2026" toDate="04/08/2026" period="" whenGenerated="07/08/2026;080000">
+<AccountInformation accountId="U9000001" currency="USD" name="Test" accountType="Individual" dateOpened="03/08/2026" dateFunded="03/08/2026" dateClosed="" />
+<EquitySummaryInBase>
+<EquitySummaryByReportDateInBase accountId="U9000001" currency="USD" reportDate="03/08/2026" cash="998.03324" stock="0" options="0" total="998.03324" />
+<EquitySummaryByReportDateInBase accountId="U9000001" currency="USD" reportDate="04/08/2026" cash="595.63324" stock="510" options="-90" total="1015.63324" />
+</EquitySummaryInBase>
+<ChangeInNAV accountId="U9000001" currency="USD" fromDate="04/08/2026" toDate="04/08/2026" startingValue="998.03324" mtm="20" realized="0" depositsWithdrawals="0" dividends="0" withholdingTax="0" interest="0" commissions="-2.4" otherFees="0" endingValue="1015.63324" twr="1.763527" />
+<Trades>
+<Trade accountId="U9000001" currency="USD" fxRateToBase="1" assetCategory="STK" symbol="XYZ" description="XYZ CORP" conid="500001" tradeID="8002" ibExecID="E8002" ibOrderID="9002" dateTime="04/08/2026;100000" tradeDate="04/08/2026" quantity="10" tradePrice="50" proceeds="-500" ibCommission="-1" ibCommissionCurrency="USD" netCash="-501" cost="501" fifoPnlRealized="0" buySell="BUY" openCloseIndicator="O" levelOfDetail="EXECUTION" />
+<Trade accountId="U9000001" currency="USD" fxRateToBase="1" assetCategory="OPT" symbol="XYZ   260918P00100000" description="XYZ 18SEP26 100 P" conid="600100" underlyingSymbol="XYZ" multiplier="100" strike="100" expiry="18/09/2026" putCall="P" tradeID="8003" ibExecID="E8003" ibOrderID="11" dateTime="04/08/2026;110000" tradeDate="04/08/2026" quantity="-1" tradePrice="2" proceeds="200" ibCommission="-0.7" ibCommissionCurrency="USD" netCash="199.3" fifoPnlRealized="0" buySell="SELL" openCloseIndicator="O" levelOfDetail="EXECUTION" />
+<Trade accountId="U9000001" currency="USD" fxRateToBase="1" assetCategory="OPT" symbol="XYZ   260918P00095000" description="XYZ 18SEP26 95 P" conid="600095" underlyingSymbol="XYZ" multiplier="100" strike="95" expiry="18/09/2026" putCall="P" tradeID="8004" ibExecID="E8004" ibOrderID="11" dateTime="04/08/2026;110000" tradeDate="04/08/2026" quantity="1" tradePrice="1" proceeds="-100" ibCommission="-0.7" ibCommissionCurrency="USD" netCash="-100.7" fifoPnlRealized="0" buySell="BUY" openCloseIndicator="O" levelOfDetail="EXECUTION" />
+</Trades>
+<OpenPositions>
+<OpenPosition accountId="U9000001" currency="USD" fxRateToBase="1" assetCategory="STK" symbol="XYZ" conid="500001" reportDate="04/08/2026" position="10" markPrice="51" positionValue="510" costBasisPrice="50.1" costBasisMoney="501" fifoPnlUnrealized="9" side="Long" levelOfDetail="SUMMARY" />
+<OpenPosition accountId="U9000001" currency="USD" fxRateToBase="1" assetCategory="OPT" symbol="XYZ   260918P00100000" conid="600100" underlyingSymbol="XYZ" multiplier="100" strike="100" expiry="18/09/2026" putCall="P" reportDate="04/08/2026" position="-1" markPrice="1.8" positionValue="-180" costBasisPrice="1.993" costBasisMoney="-199.3" fifoPnlUnrealized="19.3" side="Short" levelOfDetail="SUMMARY" />
+<OpenPosition accountId="U9000001" currency="USD" fxRateToBase="1" assetCategory="OPT" symbol="XYZ   260918P00095000" conid="600095" underlyingSymbol="XYZ" multiplier="100" strike="95" expiry="18/09/2026" putCall="P" reportDate="04/08/2026" position="1" markPrice="0.9" positionValue="90" costBasisPrice="1.007" costBasisMoney="100.7" fifoPnlUnrealized="-10.7" side="Long" levelOfDetail="SUMMARY" />
+</OpenPositions>
+<FIFOPerformanceSummaryInBase>
+<FIFOPerformanceSummaryUnderlying accountId="U9000001" assetCategory="STK" symbol="XYZ" conid="500001" totalRealizedPnl="0" totalUnrealizedPnl="9" reportDate="04/08/2026" />
+<FIFOPerformanceSummaryUnderlying accountId="U9000001" assetCategory="OPT" symbol="XYZ" conid="500001" totalRealizedPnl="0" totalUnrealizedPnl="8.6" reportDate="04/08/2026" />
+<FIFOPerformanceSummaryUnderlying accountId="U9000001" assetCategory="" conid="" description="Total (All Assets)" totalRealizedPnl="0" totalUnrealizedPnl="17.6" reportDate="04/08/2026" />
+</FIFOPerformanceSummaryInBase>
+</FlexStatement>
+<FlexStatement accountId="U9000001" fromDate="05/08/2026" toDate="05/08/2026" period="" whenGenerated="07/08/2026;080000">
+<AccountInformation accountId="U9000001" currency="USD" name="Test" accountType="Individual" dateOpened="03/08/2026" dateFunded="03/08/2026" dateClosed="" />
+<EquitySummaryInBase>
+<EquitySummaryByReportDateInBase accountId="U9000001" currency="USD" reportDate="04/08/2026" cash="595.63324" stock="510" options="-90" total="1015.63324" />
+<EquitySummaryByReportDateInBase accountId="U9000001" currency="USD" reportDate="05/08/2026" cash="1027.48324" stock="0" options="0" total="1027.48324" />
+</EquitySummaryInBase>
+<ChangeInNAV accountId="U9000001" currency="USD" fromDate="05/08/2026" toDate="05/08/2026" startingValue="1015.63324" mtm="10" realized="0" depositsWithdrawals="0" dividends="5" withholdingTax="-0.75" interest="0" commissions="-2.4" otherFees="0" endingValue="1027.48324" twr="1.166764" />
+<CashTransactions>
+<CashTransaction accountId="U9000001" currency="USD" fxRateToBase="1" assetCategory="STK" symbol="XYZ" conid="500001" type="Dividends" description="XYZ(US0000000001) Cash Dividend USD 0.50 per Share" amount="5" dateTime="05/08/2026;202000" reportDate="05/08/2026" transactionID="7002" levelOfDetail="DETAIL" />
+<CashTransaction accountId="U9000001" currency="USD" fxRateToBase="1" assetCategory="STK" symbol="XYZ" conid="500001" type="Withholding Tax" description="XYZ(US0000000001) Cash Dividend - US Tax" amount="-0.75" dateTime="05/08/2026;202000" reportDate="05/08/2026" transactionID="7003" levelOfDetail="DETAIL" />
+<CashTransaction accountId="U9000001" currency="USD" fxRateToBase="1" symbol="XYZ" type="Dividends" amount="5" dateTime="05/08/2026" levelOfDetail="SUMMARY" />
+<CashTransaction accountId="U9000001" currency="USD" fxRateToBase="1" symbol="XYZ" type="Withholding Tax" amount="-0.75" dateTime="05/08/2026" levelOfDetail="SUMMARY" />
+</CashTransactions>
+<Trades>
+<Trade accountId="U9000001" currency="USD" fxRateToBase="1" assetCategory="OPT" symbol="XYZ   260918P00100000" description="XYZ 18SEP26 100 P" conid="600100" underlyingSymbol="XYZ" multiplier="100" strike="100" expiry="18/09/2026" putCall="P" tradeID="8005" ibExecID="E8005" ibOrderID="12" dateTime="05/08/2026;140000" tradeDate="05/08/2026" quantity="1" tradePrice="1.5" proceeds="-150" ibCommission="-0.7" ibCommissionCurrency="USD" fifoPnlRealized="48.6" buySell="BUY" openCloseIndicator="C" levelOfDetail="EXECUTION" />
+<Trade accountId="U9000001" currency="USD" fxRateToBase="1" assetCategory="OPT" symbol="XYZ   260918P00095000" description="XYZ 18SEP26 95 P" conid="600095" underlyingSymbol="XYZ" multiplier="100" strike="95" expiry="18/09/2026" putCall="P" tradeID="8006" ibExecID="E8006" ibOrderID="12" dateTime="05/08/2026;140000" tradeDate="05/08/2026" quantity="-1" tradePrice="0.6" proceeds="60" ibCommission="-0.7" ibCommissionCurrency="USD" fifoPnlRealized="-41.4" buySell="SELL" openCloseIndicator="C" levelOfDetail="EXECUTION" />
+<Trade accountId="U9000001" currency="USD" fxRateToBase="1" assetCategory="STK" symbol="XYZ" description="XYZ CORP" conid="500001" tradeID="8007" ibExecID="E8007" ibOrderID="9003" dateTime="05/08/2026;150000" tradeDate="05/08/2026" quantity="-10" tradePrice="52" proceeds="520" ibCommission="-1" ibCommissionCurrency="USD" fifoPnlRealized="18" buySell="SELL" openCloseIndicator="C" levelOfDetail="EXECUTION" />
+<Trade accountId="U9000001" currency="USD" fxRateToBase="1" assetCategory="STK" symbol="XYZ" conid="500001" tradeID="8007" dateTime="05/08/2026;150000" tradeDate="05/08/2026" quantity="-10" tradePrice="52" fifoPnlRealized="18" openDateTime="04/08/2026;100000" buySell="SELL" openCloseIndicator="C" levelOfDetail="CLOSED_LOT" />
+</Trades>
+<FIFOPerformanceSummaryInBase>
+<FIFOPerformanceSummaryUnderlying accountId="U9000001" assetCategory="STK" symbol="XYZ" conid="500001" totalRealizedPnl="18" totalUnrealizedPnl="0" reportDate="05/08/2026" />
+<FIFOPerformanceSummaryUnderlying accountId="U9000001" assetCategory="OPT" symbol="XYZ" conid="500001" totalRealizedPnl="7.2" totalUnrealizedPnl="0" reportDate="05/08/2026" />
+<FIFOPerformanceSummaryUnderlying accountId="U9000001" assetCategory="" conid="" description="Total (All Assets)" totalRealizedPnl="25.2" totalUnrealizedPnl="0" reportDate="05/08/2026" />
+</FIFOPerformanceSummaryInBase>
+</FlexStatement>
+<FlexStatement accountId="U9000001" fromDate="06/08/2026" toDate="06/08/2026" period="" whenGenerated="07/08/2026;080000">
+<AccountInformation accountId="U9000001" currency="USD" name="Test" accountType="Individual" dateOpened="03/08/2026" dateFunded="03/08/2026" dateClosed="" />
+<EquitySummaryInBase>
+<EquitySummaryByReportDateInBase accountId="U9000001" currency="USD" reportDate="05/08/2026" cash="1027.48324" stock="0" options="0" total="1027.48324" />
+<EquitySummaryByReportDateInBase accountId="U9000001" currency="USD" reportDate="06/08/2026" cash="1026.58324" stock="0" options="0" total="1026.58324" />
+</EquitySummaryInBase>
+<ChangeInNAV accountId="U9000001" currency="USD" fromDate="06/08/2026" toDate="06/08/2026" startingValue="1027.48324" mtm="0" realized="0" depositsWithdrawals="0" dividends="0" withholdingTax="0" interest="0.1" commissions="0" otherFees="-1" endingValue="1026.58324" twr="-0.087594" />
+<CashTransactions>
+<CashTransaction accountId="U9000001" currency="USD" fxRateToBase="1" type="Other Fees" description="NETWORK A (NYSE) NONPRO" amount="-1" dateTime="06/08/2026" transactionID="7004" levelOfDetail="DETAIL" />
+<CashTransaction accountId="U9000001" currency="USD" fxRateToBase="1" type="Broker Interest Received" description="USD CREDIT INT" amount="0.10" dateTime="06/08/2026" transactionID="7005" levelOfDetail="DETAIL" />
+<CashTransaction accountId="U9000001" currency="USD" fxRateToBase="1" type="Other Fees" amount="-1" dateTime="06/08/2026" levelOfDetail="SUMMARY" />
+<CashTransaction accountId="U9000001" currency="USD" fxRateToBase="1" type="Broker Interest Received" amount="0.10" dateTime="06/08/2026" levelOfDetail="SUMMARY" />
+</CashTransactions>
+<Trades />
+<UnbundledCommissionDetails><UnbundledCommissionDetail accountId="U9000001" tradeID="8007" totalCommission="-1" /></UnbundledCommissionDetails>
+</FlexStatement>
+</FlexStatements>
+</FlexQueryResponse>

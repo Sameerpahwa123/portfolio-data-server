@@ -1,0 +1,5 @@
+[
+  {"label": "capital.com", "title": "CAPITAL.COM", "currency": "USD",
+   "deposited": 0.00, "current_value": 0.00, "as_of": "YYYY-MM-DD",
+   "note": "Manual entry. All P&L is realized (no open positions)."}
+]

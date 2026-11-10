@@ -1,0 +1,14 @@
+.env
+*.db
+*.db-wal
+*.db-shm
+raw/
+dashboard.html
+.venv/
+__pycache__/
+.pytest_cache/
+pie.html
+manual_accounts.json
+iaui_gld.html
+sim_gold.html
+logs/

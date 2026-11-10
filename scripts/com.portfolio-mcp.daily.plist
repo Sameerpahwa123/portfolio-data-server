@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.portfolio-mcp.daily</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/you/GOLDPORTFOLIOANALYSIS/portfolio-mcp/.venv/bin/python</string>
+    <string>/Users/you/GOLDPORTFOLIOANALYSIS/portfolio-mcp/daily_update.py</string>
+  </array>
+  <key>WorkingDirectory</key><string>/Users/you/GOLDPORTFOLIOANALYSIS/portfolio-mcp</string>
+  <key>EnvironmentVariables</key><dict><key>TZ</key><string>Asia/Dubai</string></dict>
+  <!-- 01:00 Dubai is the main run. The day that just closed in the US is only published hours later,
+       so 11:00 picks it up. -->
+  <key>StartCalendarInterval</key>
+  <array>
+    <dict><key>Hour</key><integer>1</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Hour</key><integer>11</integer><key>Minute</key><integer>0</integer></dict>
+  </array>
+  <key>StandardOutPath</key><string>/Users/you/GOLDPORTFOLIOANALYSIS/portfolio-mcp/logs/daily.log</string>
+  <key>StandardErrorPath</key><string>/Users/you/GOLDPORTFOLIOANALYSIS/portfolio-mcp/logs/daily.log</string>
+</dict>
+</plist>
